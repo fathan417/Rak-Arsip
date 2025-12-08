@@ -3,6 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArsipController;
 
+// ========== ENTRY POINT ==========
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
+
 // ========== PUBLIC ==========
 Route::get('/dashboard', [ArsipController::class, 'public'])->name('dashboard');
 
