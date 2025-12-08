@@ -10,4 +10,16 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+
+    server: {
+        https: true
+    },
+
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+        emptyOutDir: true
+    },
+
+    base: '/'
 });
