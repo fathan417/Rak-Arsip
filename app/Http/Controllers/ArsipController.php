@@ -128,11 +128,17 @@ class ArsipController extends Controller
             $fileDokumenPath = null;
 
             if ($request->hasFile('thumbnail')) {
-                $thumbnailPath = $request->file('thumbnail')->store('thumbnails', 'public');
+                $thumbnailName = Str::random(40) . '.' . $request->thumbnail->extension();
+                $request->thumbnail->move(public_path('storage/thumbnails'), $thumbnailName);
+                        
+                $thumbnailPath = 'thumbnails/' . $thumbnailName;
             }
-
+            
             if ($request->hasFile('file_dokumen')) {
-                $fileDokumenPath = $request->file('file_dokumen')->store('dokumen', 'public');
+                $fileName = Str::random(40) . '.' . $request->file_dokumen->extension();
+                $request->file_dokumen->move(public_path('storage/dokumen'), $fileName);
+            
+                $fileDokumenPath = 'dokumen/' . $fileName;
             }
 
             Arsip::create([
