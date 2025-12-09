@@ -32,3 +32,15 @@ Route::put('/dashboard/admin/arsip/{id}', [ArsipController::class, 'update'])->n
 
 // DELETE DATA
 Route::delete('/dashboard/admin/arsip/{id}', [ArsipController::class, 'destroy'])->name('arsip.destroy');
+
+// ========== FILE STORAGE ACCESS ==========
+Route::get('/storage-direct/{path}', function ($path) {
+    $file = storage_path('app/public/' . $path);
+
+    if (!file_exists($file)) {
+        abort(404);
+    }
+
+    return response()->file($file);
+})->where('path', '.*');
+

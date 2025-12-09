@@ -1,7 +1,7 @@
 @foreach ($arsip as $item)
 <div class="card card-side bg-zinc-100 shadow-md w-full text-zinc-900">
   <figure class="p-3">
-    <img src="{{ $item->thumbnail_path ? asset('storage/'.$item->thumbnail_path) : asset('images/empty-thumbnail-2.svg') }}"
+    <img src="{{ $item->thumbnail_path ? url('storage-direct/'.$item->thumbnail_path) : asset('images/empty-thumbnail-2.svg') }}"
          alt="Thumb" class="rounded-xl w-28 h-36 bg-black/50 bg-blend-darken {{ $item->thumbnail_path ? 'object-cover' : 'object-contain p-2' }}" />
   </figure>
 
